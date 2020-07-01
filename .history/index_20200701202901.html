@@ -119,6 +119,7 @@
       //     return x * 2
       // }
 
+
       // function in function
       inputAny = document.querySelectorAll('input');
       console.log('inputAny', inputAny);
@@ -141,37 +142,36 @@
         // let doubleMe= createMultiplier(2)
         // console.log('inner function ==== ', doubleMe(5))
 
-        let a = input1;
-        console.log('a', a);
-        let b = input2;
-        console.log('b', b);
+        let a = input1
+        console.log("a", a)
+        let b = input2
+        console.log("b", b)
 
         function szorzas(a) {
+
           return function (b) {
+
             return a * b;
           };
         }
         let res = szorzas(a);
-        console.log(' the result of NB1 * NB2 is=== ', res(b));
+        console.log(' outter function ===', res(b));
+        
       });
-      // lesson learnt: if you have a function in function, then you have to call the inner function in a variable, and then call the outter function in the function of the inner ----higher order functions
+// lesson learnt: if you have a function in function, then you have to call the inner function in a variable, and then call the outter function in the function of the inner ----higher order functions
 
-      //forEach
-      let myColors = ['yellow', 'green', 'red', 'blue'];
+//forEach
+let myColors = ['yellow', 'green','red', 'blue']
 
-      myColors.forEach(doSomethingWithArrays);
+myColors.forEach
 
-      function doSomethingWithArrays(parameterName) {
-        document.write('the color ' + parameterName + ' is a color. <br>');
-      }
-      //takeaway: element.forEach(!function!) --> function in the function of a random parameter.
 
-      myColors.forEach((parameter) => {
-        document.write(
-          'This is my firs ARROW Function. Plot the color::: ' + parameter+"<br>"
-        );
-      });
 
+
+
+
+
+      //end 
     </script>
   </body>
 </html>

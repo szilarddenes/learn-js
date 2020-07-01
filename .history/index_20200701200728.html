@@ -1,0 +1,185 @@
+<!-- src: https://www.youtube.com/watch?v=CXnnw9rQH5I&list=PLpcSpRrAaOaoIqHQddZOdbRrzr5dJtgSs&index=4 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="inputField" placeholder="nb 1"><br>
+    <div>*</div>
+    <input type="number" id="inputField2" placeholder="nb 2"><br>
+    <script>
+        // objects
+
+        let cat = {
+            name: "Fluffy",
+            age: 2,
+            foods: {
+                favorite: "dry food",
+                secondFavorite: "fish",
+            },
+            eyeColor: "orange",
+            meow() {
+
+                console.log("I say meeeeeeowwww");
+
+            },
+            end() {
+                console.log(`this is the end`);
+            }
+        }
+        let catTwo = {
+            name: "Repa",
+            age: 3,
+            foods: {
+                favorite: "minden",
+                secondFavorite: "fish",
+            },
+            eyeColor: "blue",
+            meow() {
+
+                console.log("I say meeeeeeowwww");
+
+            },
+            end() {
+                console.log(`this is the end`);
+            }
+        }
+        cat.meow()
+
+
+        //arrays
+
+        let myFavouriteNumbers = [9, 7, 3, 4, 30]
+        let myFavoriteColoros = ["yellow", "green"]
+        let myPets = [{
+            cat: "Meowsalot",
+            species: "dagi"
+        }, {
+            catTwo: "repacica",
+            species: "dagi2"
+
+        }, {
+            catThree: "REPA",
+            species: "dagi3"
+        }]
+
+        //adding to array
+        myFavoriteColoros.push("black")
+        console.log("myFavoriteColoros", myFavoriteColoros)
+
+        //having different functions to numbers and strings
+        let mynamme = "szisz"
+        let myNumber = 7.89
+        console.log("myNumber", myNumber.toFixed())
+        console.log("mynamme", mynamme.toUpperCase())
+
+        //removing from array based on index -- 0 starter
+        myFavoriteColoros.splice(2)
+        console.log("myFavoriteColoros", myFavoriteColoros)
+
+        //sort and addressing arrays
+
+        console.log("myPets", myPets[0].species)
+        console.log("myPets.length", myPets.length)
+        for (i = 0; i <= myPets.length; i++) {
+
+            console.log(myPets[i].species)
+            console.log(myPets[i])
+            i++
+        }
+
+        //while loop
+
+        let counter = 0
+        while (counter <= 4) {
+            // document.write('The counter current status is' + counter + 'and' + (13 - counter) + 'is left behind.')
+            console.log('The counter current status is ' + counter + ' and ' + (4 - counter) + ' is left behind.<br>')
+
+            document.write('The counter current status is ' + counter + ' and ' + (4 - counter) + ' is left behind.<br>')
+            counter++
+        }
+
+        // function
+
+        // function doubleMe(x) {
+        //     return x * 2
+        // }
+
+        // function in function
+        inputAny = document.querySelectorAll('input')
+        console.log("inputAny", inputAny)
+
+        inputAny[0,1].addEventListener('input', function (evt) {
+
+        let input1 = document.getElementById('inputField').value
+        console.log("input1", input1)
+        
+        let input2 = document.getElementById('inputField2').value
+        console.log("input2", input2)
+        
+        window.input1 = input1
+        window.input2 = input2
+function createMultiplier(multiplier){
+    return function(x){
+        return x*multiplier
+    }
+}
+let doubleMe= createMultiplier(2)
+console.log('inner function ==== ', doubleMe(5))
+
+        
+        } )
+     
+
+        function szorzas(input1) {
+            return function(input2) {
+                
+               return input1*3
+               
+            }}
+
+           let test=szorzas(5)
+           console.log("test", test)
+           console.log("input1", input1)
+        console.log("input2", input2)
+        
+       
+       
+
+        // var result= szorzas(input2)
+        // console.log("result", result)
+        //document.write('this is the result= ' + res)
+       
+       
+
+        // 
+     
+
+     
+
+
+
+// input.addEventListener('input',createMultiplier(input.value))
+
+        // let doubleMe = createMultiplier(2)
+        // let tripleMe = createMultiplier(3)
+
+        // let input = createMultiplier(8)
+
+
+       
+    //document.write('the result is ' + res)  
+
+        //end
+    </script>
+
+</body>
+
+
+</html>
