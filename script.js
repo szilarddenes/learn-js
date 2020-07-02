@@ -1,34 +1,34 @@
 // objects
 
 let cat = {
-  name: 'Fluffy',
-  age: 2,
-  foods: {
-    favorite: 'dry food',
-    secondFavorite: 'fish',
-  },
-  eyeColor: 'orange',
-  meow() {
-    console.log('I say meeeeeeowwww');
-  },
-  end() {
-    console.log(`this is the end`);
-  },
+    name: 'Fluffy',
+    age: 2,
+    foods: {
+        favorite: 'dry food',
+        secondFavorite: 'fish',
+    },
+    eyeColor: 'orange',
+    meow() {
+        console.log('I say meeeeeeowwww');
+    },
+    end() {
+        console.log(`this is the end`);
+    },
 };
 let catTwo = {
-  name: 'Repa',
-  age: 3,
-  foods: {
-    favorite: 'minden',
-    secondFavorite: 'fish',
-  },
-  eyeColor: 'blue',
-  meow() {
-    console.log('I say meeeeeeowwww');
-  },
-  end() {
-    console.log(`this is the end`);
-  },
+    name: 'Repa',
+    age: 3,
+    foods: {
+        favorite: 'minden',
+        secondFavorite: 'fish',
+    },
+    eyeColor: 'blue',
+    meow() {
+        console.log('I say meeeeeeowwww');
+    },
+    end() {
+        console.log(`this is the end`);
+    },
 };
 cat.meow();
 
@@ -36,19 +36,18 @@ cat.meow();
 
 let myFavouriteNumbers = [9, 7, 3, 4, 30];
 let myFavoriteColoros = ['yellow', 'green'];
-let myPets = [
-  {
-    cat: 'Meowsalot',
-    species: 'dagi',
-  },
-  {
-    catTwo: 'repacica',
-    species: 'dagi2',
-  },
-  {
-    catThree: 'REPA',
-    species: 'dagi3',
-  },
+let myPets = [{
+        cat: 'Meowsalot',
+        species: 'dagi',
+    },
+    {
+        catTwo: 'repacica',
+        species: 'dagi2',
+    },
+    {
+        catThree: 'REPA',
+        species: 'dagi3',
+    },
 ];
 
 //adding to array
@@ -70,32 +69,32 @@ console.log('myFavoriteColoros', myFavoriteColoros);
 console.log('myPets', myPets[0].species);
 console.log('myPets.length', myPets.length);
 for (i = 0; i <= myPets.length; i++) {
-  console.log(myPets[i].species);
-  console.log(myPets[i]);
-  i++;
+    console.log(myPets[i].species);
+    console.log(myPets[i]);
+    i++;
 }
 
 //while loop
 
 let counter = 0;
 while (counter <= 4) {
-  // document.write('The counter current status is' + counter + 'and' + (13 - counter) + 'is left behind.')
-  console.log(
-    'The counter current status is ' +
-      counter +
-      ' and ' +
-      (4 - counter) +
-      ' is left behind.<br>'
-  );
+    // document.write('The counter current status is' + counter + 'and' + (13 - counter) + 'is left behind.')
+    console.log(
+        'The counter current status is ' +
+        counter +
+        ' and ' +
+        (4 - counter) +
+        ' is left behind.<br>'
+    );
 
-  document.write(
-    'The counter current status is ' +
-      counter +
-      ' and ' +
-      (4 - counter) +
-      ' is left behind.<br>'
-  );
-  counter++;
+    document.write(
+        'The counter current status is ' +
+        counter +
+        ' and ' +
+        (4 - counter) +
+        ' is left behind.<br>'
+    );
+    counter++;
 }
 
 // function
@@ -108,36 +107,36 @@ while (counter <= 4) {
 inputAny = document.querySelectorAll('input');
 console.log('inputAny', inputAny);
 
-inputAny[(0, 1)].addEventListener('input', function (evt) {
-  let input1 = document.getElementById('inputField').value;
-  console.log('input1', input1);
+inputAny[(0, 1)].addEventListener('input', function(evt) {
+    let input1 = document.getElementById('inputField').value;
+    console.log('input1', input1);
 
-  let input2 = document.getElementById('inputField2').value;
-  console.log('input2', input2);
+    let input2 = document.getElementById('inputField2').value;
+    console.log('input2', input2);
 
-  window.input1 = input1;
-  window.input2 = input2;
+    window.input1 = input1;
+    window.input2 = input2;
 
-  // function createMultiplier(multiplier){
-  //     return function(x){
-  //         return x*multiplier
-  //     }
-  // }
-  // let doubleMe= createMultiplier(2)
-  // console.log('inner function ==== ', doubleMe(5))
+    // function createMultiplier(multiplier){
+    //     return function(x){
+    //         return x*multiplier
+    //     }
+    // }
+    // let doubleMe= createMultiplier(2)
+    // console.log('inner function ==== ', doubleMe(5))
 
-  let a = input1;
-  console.log('a', a);
-  let b = input2;
-  console.log('b', b);
+    let a = input1;
+    console.log('a', a);
+    let b = input2;
+    console.log('b', b);
 
-  function szorzas(a) {
-    return function (b) {
-      return a * b;
-    };
-  }
-  let res = szorzas(a);
-  console.log(' the result of NB1 * NB2 is=== ', res(b));
+    function szorzas(a) {
+        return function(b) {
+            return a * b;
+        };
+    }
+    let res = szorzas(a);
+    console.log(' the result of NB1 * NB2 is=== ', res(b));
 });
 // lesson learnt: if you have a function in function, then you have to call the inner function in a variable, and then call the outter function in the function of the inner ----higher order functions
 
@@ -147,28 +146,28 @@ let myColors = ['yellow', 'green', 'red', 'blue'];
 myColors.forEach(doSomethingWithArrays);
 
 function doSomethingWithArrays(parameterName) {
-  document.write('the color ' + parameterName + ' is a color. <br>');
+    document.write('the color ' + parameterName + ' is a color. <br>');
 }
 //takeaway: element.forEach(!function!) --> function in the function of a random parameter.
 
 myColors.forEach((parameter) => {
-  document.write(
-    'This is my firs ARROW Function. Plot the color::: ' + parameter + '<br>'
-  );
+    document.write(
+        'This is my firs ARROW Function. Plot the color::: ' + parameter + '<br>'
+    );
 });
 
 // Return vs Mutating
 
 let gyumolcsok = [
-  { name: 'alma', jellemzo: 'savanyo', szin: 'piros', darab: 4 },
-  { name: 'korte', jellemzo: 'kemeny', szin: 'sarga', darab: 1 },
-  { name: 'dinnye', jellemzo: 'nehez', szin: 'zold', darab: 10 },
+    { name: 'alma', jellemzo: 'savanyo', szin: 'piros', darab: 4 },
+    { name: 'korte', jellemzo: 'kemeny', szin: 'sarga', darab: 1 },
+    { name: 'dinnye', jellemzo: 'nehez', szin: 'zold', darab: 10 },
 ];
 
 gyumolcsok.push({
-  name: 'szolo',
-  jellemzo: 'bor lesz belole',
-  szin: 'valtozo',
+    name: 'szolo',
+    jellemzo: 'bor lesz belole',
+    szin: 'valtozo',
 });
 
 //push method returns the array.length!!
@@ -178,7 +177,7 @@ gyumolcsok.push({
 let ourHello = gyumolcsok.map(testHello);
 
 function testHello() {
-  return 'hello';
+    return 'hello';
 }
 console.log('ourHello', ourHello);
 
@@ -186,7 +185,7 @@ let ourJellemzo = gyumolcsok.map(fJellemzok);
 console.log('ourJellemzo', ourJellemzo);
 
 function fJellemzok(randomPar) {
-  return randomPar.jellemzo;
+    return randomPar.jellemzo;
 }
 
 //filter
@@ -195,17 +194,114 @@ let onlyKisebb = gyumolcsok.filter(szuresF);
 console.log('onlyKisebb', onlyKisebb);
 
 function szuresF(paramEter) {
-  return paramEter.darab < 10; //or any other x.name == 'dinnye'
+    return paramEter.darab < 10; //or any other x.name == 'dinnye'
 }
 
 let onlySarga = gyumolcsok.filter(szuresF2);
 console.log('onlySarga', onlySarga);
+
 function szuresF2(pm2) {
-  return pm2.szin == 'sarga'; //or any other x.name == 'dinnye'
+    return pm2.szin == 'sarga'; //or any other x.name == 'dinnye'
 }
 
+//debugger;
+
 // create a new array from an array from NoMans Land---from the Memory. so for a filtered one
-//let leszures = gyumolcsok.filter(onlyKisebb).filter(onlySarga).map(fJellemzok);
-// console.log("leszures", leszures)
+//let leszures = gyumolcsok.filter(onlyKisebb) //.filter(onlySarga).map(fJellemzok);
+//console.log("leszures", leszures)
+
+
+
+
+//scope for variables: let block scope: inside of {}, var function scope: inside of function
+//context biggest source of confusion regarding objects
+
+//example object with "this" keyword
+
+let john = {
+    firstName: "John",
+    lastName: "Doe",
+    driveCar() {
+        console.log(this.firstName + "" + this.lastName + " is driving a car.")
+    }
+}
+john.driveCar()
+
+//the THIS keyword points towards the object that is executing the current function -- it allows to stay flexible
+
+function breathe() {
+    console.log(this.firstName + "" + this.lastName + " just inhaled and exhaled.")
+}
+
+//method call---is going to execute the function, in control of the keyword..like john
+breathe.call(john)
+
+
+
+//arrow function 2
+
+let myNumbers = [50, 200, 400, 1000]
+
+let doubledNumbers = myNumbers.map(x => x * 2)
+console.log(doubledNumbers)
+
+
+//function hoisting
+
+function cool() {
+    console.log("fucntioncool -> is cool.")
+}
+cool()
+
+//this works because of the ordering of the lines
+
+// -------- // console.log("strawberryCount", strawberryCount)
+let strawberryCount = 100 // this can be accessed only below
+
+//not all functions get hoisted. 
+
+
+let cool2 = function() {
+    console.log('hey')
+}
+cool2() // if a put before the variable ==> error.
+
+
+
+// backticks `` template literal ${}
+
+let myname = 'Szisz'
+console.log(`my name is ${myname}`)
+
+
+//to do list
+
+
+let ourForm = document.getElementById('ourForm')
+let ourField = document.getElementById('ourField')
+let ourList = document.getElementById('ourList')
+
+
+ourForm.addEventListener('submit', (t) => {
+    t.preventDefault()
+    createItem(ourField.value)
+})
+
+function createItem(x) {
+    let ourHTML = ` <li>${x}  <button onclick="deleteItem(this)">Delete</button></li>`
+    ourList.insertAdjacentHTML("beforeend", ourHTML)
+    ourField.value = ""
+    ourField.focus
+}
+
+function deleteItem(elToDelete) {
+    elToDelete.parentElement.remove()
+}
+
+
+
+
+
+
 
 //end
