@@ -6,22 +6,21 @@ let db //defined below at mongodb connect
 let mongoose = require('mongoose')
 
 let public = app.use(express.static('public')) //inviting static files to execute in our environment --will make available the content of this folder for the users
-// console.log("public", public)
+    // console.log("public", public)
 
 let connectionString =
-  'mongodb+srv://todoappuser:todoappuser@cluster0-to-do.b5gol.mongodb.net/Cluster0-to-do?retryWrites=true&w=majority'
+    'mongodb+srv://todoappuser:todoappuser@cluster0-to-do.b5gol.mongodb.net/Cluster0-to-do?retryWrites=true&w=majority'
 
 //first param : connection string; second param: mongodb config property, third param: the action in the method
 mongodb.connect(
-  connectionString,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  function (err, client) {
-    db = client.db() //this selects our mongodb database
-    app.listen(3000)
-  }
+    connectionString, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    },
+    function(err, client) {
+        db = client.db() //this selects our mongodb database
+        app.listen(3000)
+    }
 )
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -29,13 +28,13 @@ app.use(express.urlencoded({ extended: false }))
 // app.get('/db', (req,res)=>console.log(db.collection('items').find().toArray()))
 
 app.get('/', (req, res) => {
-  db.collection('items')
-    .find()
-    .toArray((err, items) => {
-      // console.log(items)
-      console.table(items)
-      //start html
-      res.send(`
+            db.collection('items')
+                .find()
+                .toArray((err, items) => {
+                        // console.log(items)
+                        console.table(items)
+                            //start html
+                        res.send(`
     <!DOCTYPE html>
     <html>
     <head>
@@ -58,7 +57,7 @@ app.get('/', (req, res) => {
           </form>
         </div>
         
-        <ul id="item-list" class="list-group pb-5">
+        <ul class="list-group pb-5">
         ${items
           .map((azAdat) => {
             return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
