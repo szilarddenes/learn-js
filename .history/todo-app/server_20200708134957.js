@@ -63,12 +63,11 @@ app.get('/', (req, res) => {
             return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
           <span class="item-text">${azAdat.text}</span>
           <div>
-            <button data-id="${azAdat._id}" class="edit-me btn btn-secondary btn-sm mr-1" >Edit</button>
+            <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
             <button class="delete-me btn btn-danger btn-sm">Delete</button>
           </div>
         </li>`
           })
-          //data-id="${azAdat._id}"
           .join('')}
         </ul>
         
@@ -97,13 +96,5 @@ app.post('/create-item', (req, res) => {
 
 app.post('/update-item', (req, res) => {
   console.log(req.body.text)
-  db.collection('items').findOneAndUpdate(
-    {
-      _id: new mongodb.ObjectId(req.body.id),
-    },
-    { $set: { text: req.body.text } },
-    () => {
-      res.send('Success')
-    }
-  )
+  db.collection('items').findOneAndUpdate(a,{$set:{text:req.body.text}},())
 })

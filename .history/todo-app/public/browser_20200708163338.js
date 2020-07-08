@@ -22,6 +22,7 @@ document.addEventListener('click', (e) => {
                 .catch(() => {
                     console.log('Please try again later')
                 })
+
         }
     }
 })

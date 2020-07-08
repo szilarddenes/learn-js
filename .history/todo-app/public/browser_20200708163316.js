@@ -8,20 +8,6 @@ document.addEventListener('click', (e) => {
             //post a = url, post b = data it's going to be sent to the url --will return a promise --for not known time interval is useful --on the fly.
 
         //then()--it's not going to run until the post is not ready or action is not complete
-        if (userInput) {
-            axios
-                .post('/update-item', {
-                    text: userInput,
-                    id: e.target.getAttribute('data-id'),
-                })
-                .then(() => {
-                    e.target.parentElement.parentElement.querySelector(
-                        '.item-text'
-                    ).innerHTML = userInput
-                })
-                .catch(() => {
-                    console.log('Please try again later')
-                })
-        }
+        if ()
     }
 })

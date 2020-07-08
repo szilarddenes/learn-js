@@ -1,4 +1,6 @@
 {
     "liveServer.settings.CustomBrowser": "chrome",
-    "liveServer.settings.ChromeDebuggingAttachment": false
+    "liveServer.settings.ChromeDebuggingAttachment": false,
+    "terminal.explorerKind": "external",
+    "terminal.integrated.allowMnemonics": true
 }
