@@ -1,0 +1,24 @@
+{
+  "name": "learnjs",
+  "version": "1.0.0",
+  "description": "learning some server side stuff",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szdenes/learnJS.git"
+  },
+  "author": "szdenes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/szdenes/learnJS/issues"
+  },
+  "homepage": "https://szdenes.github.io/learnjs",
+  "dependencies": {
+    "express": "^4.17.1",
+    "gh-pages": "^3.1.0"
+  }
+}
