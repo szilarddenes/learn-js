@@ -7,12 +7,12 @@
     "watch": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "deploy": "gh-pages -d todo-app"
+    "deploy": "gh-pages -d"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://szdenes.github.io/learnjs",
+  "homepage": "https://szdenes.github.io/learnjs/todo-app",
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
