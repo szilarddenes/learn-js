@@ -1,40 +1,57 @@
 let express = require('express') //invite from node modules
 let app = express()
 let mongodb = require('mongodb') // invite from node modules
+let sanitizeHTML = require('sanitize-html')
 
 let db //defined below at mongodb connect
 let mongoose = require('mongoose')
 
 let public = app.use(express.static('public')) //inviting static files to execute in our environment --will make available the content of this folder for the users
-    // console.log("public", public)
+// console.log("public", public)
 
 let connectionString =
-    'mongodb+srv://todoappuser:todoappuser@cluster0-to-do.b5gol.mongodb.net/Cluster0-to-do?retryWrites=true&w=majority'
+  'mongodb+srv://todoappuser:todoappuser@cluster0-to-do.b5gol.mongodb.net/Cluster0-to-do?retryWrites=true&w=majority'
 
 //first param : connection string; second param: mongodb config property, third param: the action in the method
 mongodb.connect(
-    connectionString, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    },
-    function(err, client) {
-        db = client.db() //this selects our mongodb database
-        app.listen(3000)
-    }
+  connectionString,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  function (err, client) {
+    db = client.db() //this selects our mongodb database
+    app.listen(3000)
+  }
 )
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// app.get('/db', (req,res)=>console.log(db.collection('items').find().toArray()))
+//security
 
+function passwordProtected(req, res, next) {
+  res.set('WWW-Authenticate', 'Basic realm="Todo App"')
+  console.log(req.headers.authorization)
+  //user/password => learn/javascript
+  if (req.headers.authorization == 'Basic bGVhcm46amF2YXNjcmlwdA==') {
+    next()
+  } else {
+    res.status(401).send('Authentication required')
+  }
+}
+//protecting every path
+app.use(passwordProtected)
+
+// app.get('/db', (req,res)=>console.log(db.collection('items').find().toArray()))
 app.get('/', (req, res) => {
-            db.collection('items')
-                .find()
-                .toArray((err, items) => {
-                        // console.log(items)
-                        console.table(items)
-                            //start html
-                        res.send(`
+  let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
+  db.collection('items')
+    .find()
+    .toArray((err, items) => {
+      // console.log(items)
+      console.table(items)
+      //start html
+      res.send(`
     <!DOCTYPE html>
     <html>
     <head>
@@ -56,8 +73,7 @@ app.get('/', (req, res) => {
             </div>
           </form>
         </div>
-        
-        <ul class="list-group pb-5">
+        <ul id="item-list" class="list-group pb-5">
         ${items
           .map((azAdat) => {
             return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
@@ -68,11 +84,15 @@ app.get('/', (req, res) => {
           </div>
         </li>`
           })
-          //data-id="${azAdat._id}"
           .join('')}
         </ul>
-        
+       
+           
       </div>
+<script>
+let items = ${JSON.stringify(items)}
+</script>
+
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <script src="browser.js"></script>
     </body>
@@ -87,9 +107,10 @@ console.log('html parsed. congrats.')
 console.log('database loaded. congrats.')
 
 app.post('/create-item', (req, res) => {
+  let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
   // console.log('make this dynamic')
   // console.log(req.body.item)
-  db.collection('items').insertOne({ text: req.body.item }, () => {
+  db.collection('items').insertOne({text:safeText}, () => {
     //res.send('Thanks for submitting.' + '<br> <br><a href="/"> home </a>')
     res.redirect('/')
   })
@@ -97,11 +118,12 @@ app.post('/create-item', (req, res) => {
 
 app.post('/update-item', (req, res) => {
   console.log(req.body.text)
+  let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
   db.collection('items').findOneAndUpdate(
     {
       _id: new mongodb.ObjectId(req.body.id),
     },
-    { $set: { text: req.body.text } },
+    { $set: { text: safeText } },
     () => {
       res.send('Success')
     }
