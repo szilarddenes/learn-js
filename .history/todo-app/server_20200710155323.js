@@ -5,9 +5,9 @@ let sanitizeHTML = require('sanitize-html')
 
 let db //defined below at mongodb connect
 let mongoose = require('mongoose')
-let port = process.env.PORT
-if (port == null || port == '') {
-  port = 3000
+let port= process.env.PORT
+if (port == null || port == ''){
+  port=3000
 }
 
 let public = app.use(express.static('public')) //inviting static files to execute in our environment --will make available the content of this folder for the users
@@ -25,7 +25,7 @@ mongodb.connect(
   },
   function (err, client) {
     db = client.db() //this selects our mongodb database
-    app.listen(port)
+    app.listen(3000)
   }
 )
 app.use(express.json())
