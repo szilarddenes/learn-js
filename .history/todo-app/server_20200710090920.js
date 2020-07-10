@@ -73,6 +73,10 @@ app.get('/', (req, res) => {
             </div>
           </form>
         </div>
+<<<<<<< HEAD
+        
+=======
+>>>>>>> 67e5a706a3b1b9b44d289a997d46f83f9e8969dc
         <ul id="item-list" class="list-group pb-5">
         ${items
           .map((azAdat) => {
@@ -107,12 +111,17 @@ console.log('html parsed. congrats.')
 console.log('database loaded. congrats.')
 
 app.post('/create-item', (req, res) => {
+<<<<<<< HEAD
+   db.collection('items').insertOne({ text: req.body.item }, (err,info) => {
+    res.json(info.ops[0])
+=======
   let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
   // console.log('make this dynamic')
   // console.log(req.body.item)
   db.collection('items').insertOne({text:safeText}, () => {
     //res.send('Thanks for submitting.' + '<br> <br><a href="/"> home </a>')
     res.redirect('/')
+>>>>>>> 67e5a706a3b1b9b44d289a997d46f83f9e8969dc
   })
 })
 
