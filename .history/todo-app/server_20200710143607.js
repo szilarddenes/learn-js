@@ -110,9 +110,18 @@ console.log('database loaded. congrats.')
 app.post('/create-item', function (req, res) {
   let dirty = req.body.text
   let clean = sanitizeHTML(dirty, { allowedTags: [], allowedAttributes: {} })
-  db.collection('items').insertOne({ text: req.body.item }, function () {
-    res.redirect('/')
-  })
+  
+  let test = "horsdick"
+  
+  res
+  // db.collection('items').insertOne({ text: test }, function () {
+  //   res.redirect('/')
+  //   console.log("req.body.text", req.body.text)
+  //   console.log("dirty", dirty)
+  //   console.log("clean", clean)
+    
+  // })
+
 })
 
 app.post('/update-item', function (req, res) {

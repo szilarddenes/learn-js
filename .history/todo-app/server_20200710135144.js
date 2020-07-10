@@ -44,7 +44,7 @@ app.use(passwordProtected)
 
 // app.get('/db', (req,res)=>console.log(db.collection('items').find().toArray()))
 app.get('/', (req, res) => {
-
+  let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
   db.collection('items')
     .find()
     .toArray((err, items) => {
@@ -106,23 +106,37 @@ let items = ${JSON.stringify(items)}
 console.log('html parsed. congrats.')
 console.log('database loaded. congrats.')
 
-
-app.post('/create-item', function (req, res) {
-  let dirty = req.body.text
-  let clean = sanitizeHTML(dirty, { allowedTags: [], allowedAttributes: {} })
-  db.collection('items').insertOne({ text: req.body.item }, function () {
+app.post('/create-item', (req, res) => {
+  let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
+  // console.log('make this dynamic')
+  // console.log(req.body.item)
+  db.collection('items').insertOne({text:req.body.text}, () => {
+    //res.send('Thanks for submitting.' + '<br> <br><a href="/"> home </a>')
     res.redirect('/')
   })
 })
 
-app.post('/update-item', function (req, res) {
-  db.collection('items').findOneAndUpdate({ _id: new mongodb.ObjectId(req.body.id) }, { $set: { text: req.body.text } }, function () {
-    res.send("Success")
-  })
+app.post('/update-item', (req, res) => {
+  console.log(req.body.text)
+  let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
+  db.collection('items').findOneAndUpdate(
+    {
+      _id: new mongodb.ObjectId(req.body.id),
+    },
+    { $set: { text: req.body.text } },
+    () => {
+      res.send('Success')
+    }
+  )
 })
 
-app.post('/delete-item', function (req, res) {
-  db.collection('items').deleteOne({ _id: new mongodb.ObjectId(req.body.id) }, function () {
-    res.send("Success")
-  })
+app.post('/delete-item', (req, res) => {
+  db.collection('items').deleteOne(
+    {
+      _id: new mongodb.ObjectId(req.body.id),
+    },
+    () => {
+      res.send('Success')
+    }
+  )
 })

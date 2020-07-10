@@ -44,7 +44,7 @@ app.use(passwordProtected)
 
 // app.get('/db', (req,res)=>console.log(db.collection('items').find().toArray()))
 app.get('/', (req, res) => {
-
+  let safeText = sanitizeHTML(req.body.text, { allowedTags: [], allowedAttributes: {} })
   db.collection('items')
     .find()
     .toArray((err, items) => {
@@ -108,8 +108,6 @@ console.log('database loaded. congrats.')
 
 
 app.post('/create-item', function (req, res) {
-  let dirty = req.body.text
-  let clean = sanitizeHTML(dirty, { allowedTags: [], allowedAttributes: {} })
   db.collection('items').insertOne({ text: req.body.item }, function () {
     res.redirect('/')
   })
